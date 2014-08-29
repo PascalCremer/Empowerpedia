@@ -11,7 +11,7 @@ def children(node):
 	data = list(chain(*data))
 	return data
 
-def name(node)
+def name(node):
 	cursor = db.cursor()
 	cursor.execute("SELECT page.page_name FROM page WHERE page.page_id = %s" % node)
 	data = cursor.fetchall()
