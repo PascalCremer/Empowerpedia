@@ -49,11 +49,19 @@ def empowerment(node, depth):
 
 empValues = []
 #nodes = range(10)
-nodes = [5982813]
-for node in nodes:
-	visited = Set([])
-	value = empowerment(node, 3, visited)
-	empValues.append((node, value))
+depth = 1
+offset = 0
+nodelist = nodes(offset)
+while len(nodelist) > 0 and offset < 1e6:
+	for node in nodes(0):
+		visited = Set([])
+		value = empowerment(node, depth, visited)
+		empValues.append((name(node), value))
+		empValues.sort(key=lambda x:x[1],reverse=1)
+		empValues = empValues[0:10]
+		#print "Empowerement for page %s is %s" % (name(node), value)
+	offset += 10000
+	nodelist = nodes(offset)
+	print "Currently at %s" % offset
 
-empValues.sort(key=lambda x:x[1],reverse=1)
-print empValues[0:10]
+print empValues
