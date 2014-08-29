@@ -1,7 +1,12 @@
 from sets import Set
 
-def children:
-	pass
+def children(node):
+	if node <= 3:
+		return [node*2+1, node*2+2]
+	elif node == 4:
+		return [9]
+	else:
+		return []
 
 def empowerment(node, depth, visited):
 	queue = []
@@ -15,8 +20,12 @@ def empowerment(node, depth, visited):
 			empowerment(child, depth-1, visited)
 	return len(visited)
 
-def main():
+empValues = []
+nodes = range(10)
+for node in nodes:
+	visited = Set([])
+	value = empowerment(node, 3, visited)
+	empValues.append((node, value))
 
-	for node in nodes:
-		visited = Set([])
-		empowerment(node, 2, visited)
+empValues.sort(key=lambda x:x[1],reverse=1)
+print empValues[0:10]
